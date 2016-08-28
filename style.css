@@ -1,0 +1,8 @@
+#remoteVideos video {
+    height: 100%;
+    width: 50%;
+}
+#localVideo {
+    height: 100%;
+    width: 50%;
+}
