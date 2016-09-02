@@ -2,14 +2,10 @@ $("#start-video-button").click(function(){
     var webrtc = new SimpleWebRTC({
         localVideoEl: 'localVideo',
         remoteVideosEl: 'remoteVideos',
-        media: {
-            audio: true,
-            video: true
-        },
-        autoRequestMedia: true,
+        autoRequestMedia: { audio: true, video: true },
         receiveMedia: {
-            offerToReceiveAudio: 0,
-            offerToReceiveVideo: 0
+            offerToReceiveAudio: 1,
+            offerToReceiveVideo: 1
         }
     });
 
