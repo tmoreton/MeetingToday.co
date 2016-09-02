@@ -7,13 +7,14 @@
 
     <body>
         <h1>Room</h1>
-        <h2>Local Video</h2>
         <video id="localVideo"></video>
-        <h2>Remote Video</h2>
         <div id="remoteVideos"></div>
-        <div id="remotes"></div>
-        <button id="start-video-button">Start Video</button>
-<!--         <button id="start-audio-button">Start Audio Only</button> -->    
+        <input type="file" id="file">
+        <button class="button is-success" id="start-video-button">Start Video</button>
+		<button class="button is-success" id="start-audio-button">Start Audio Only</button>
+		<button class="button is-success" id="start-file-button">Filetransfer</button>
+		<a href="#" id="download" download="">Download</a>
+		<progress id="progress" value="" max=""></progress>
 	</body>
 
     <script src="simplertc.js"></script>

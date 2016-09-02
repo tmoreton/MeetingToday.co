@@ -2,10 +2,14 @@ $("#start-video-button").click(function(){
     var webrtc = new SimpleWebRTC({
         localVideoEl: 'localVideo',
         remoteVideosEl: 'remoteVideos',
-        autoRequestMedia: { audio: true, video: true },
+        media: {
+            audio: true,
+            video: true
+        },
+        autoRequestMedia: true,
         receiveMedia: {
-            offerToReceiveAudio: 1,
-            offerToReceiveVideo: 1
+            offerToReceiveAudio: 0,
+            offerToReceiveVideo: 0
         }
     });
 
@@ -22,28 +26,74 @@ $("#start-video-button").click(function(){
     });
 })
 
+$("#start-audio-button").click(function(){
+    var webrtc = new SimpleWebRTC({
+        localVideoEl: 'localVideo',
+        remoteVideosEl: 'remoteVideos',
+        media: {
+            audio: true,
+            video: false
+        },
+        autoRequestMedia: true,
+        receiveMedia: {
+            offerToReceiveAudio: 0,
+            offerToReceiveVideo: 0
+        }
+    });
+
+    var room = getParams('name')
+    webrtc.on('readyToCall', function () {
+        webrtc.joinRoom(room);
+    });
+})
+
+$("#start-file-button").click(function(){
+    var webrtc = new SimpleWebRTC({
+        localVideoEl: '',
+        remoteVideosEl: '',
+        autoRequestMedia: false,
+        receiveMedia: {
+            offerToReceiveAudio: 0,
+            offerToReceiveVideo: 0
+        }
+    });
+
+    var room = getParams('name')
+    webrtc.joinRoom(room);
+    // called when a peer is created
+    webrtc.on('createdPeer', function (peer) {
+        var peer = peer;
+        console.log('createdPeer', peer);
+        getPeer(peer);
+    });
+})
+
+
 function getPeer(peer){
     // receiving an incoming filetransfer
     peer.on('fileTransfer', function (metadata, receiver) {
         console.log('incoming filetransfer', metadata.name, metadata);
+        $("#progress").attr("max", metadata.size)
         receiver.on('progress', function (bytesReceived) {
+            $("#progress").attr("value", bytesReceived)
             console.log('receive progress', bytesReceived, 'out of', metadata.size);
         });
         // get notified when file is done
         receiver.on('receivedFile', function (file, metadata) {
             console.log('received file', metadata.name, metadata.size);
 
+            var url = URL.createObjectURL(file)
+            $("#download").attr("href", url)
+            $("#download").attr("download", metadata.name)
             // close the channel
             receiver.channel.close();
         });
         filelist.appendChild(item);
     });
 
-    // select a file
-    var fileinput = document.createElement('input');
+    var fileinput = document.getElementById('file');
     fileinput.type = 'file';
 
-    // send a file
     fileinput.addEventListener('change', function() {
         fileinput.disabled = true;
 
@@ -51,24 +101,6 @@ function getPeer(peer){
         var sender = peer.sendFile(file);
     });
 }
-
-
-// $("#start-audio-button").click(function(){
-//     var webrtc = new SimpleWebRTC({
-//         localVideoEl: 'localVideo',
-//         remoteVideosEl: 'remoteVideos',
-//         autoRequestMedia: { audio: true, video: false },
-//         receiveMedia: {
-//             offerToReceiveAudio: 0,
-//             offerToReceiveVideo: 0
-//         }
-//     });
-
-//     var room = getParams('name')
-//     webrtc.on('readyToCall', function () {
-//         webrtc.joinRoom(room);
-//     });
-// })
 
 function getParams(name, url) {
     if (!url) {
