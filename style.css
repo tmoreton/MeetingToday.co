@@ -4,8 +4,6 @@
 #localVideo {
     width: 100%;
 }
-.modal-background {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+#waiting {
+	display: none;
 }
