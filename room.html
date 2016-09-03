@@ -1,20 +1,69 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="bulma.css">
+        <link rel="stylesheet" type="text/css" href="css/bulma.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
 
     <body>
-        <h1>Room</h1>
-        <video id="localVideo"></video>
-        <div id="remoteVideos"></div>
-        <input type="file" id="file">
-        <button class="button is-success" id="start-video-button">Start Video</button>
-		<button class="button is-success" id="start-audio-button">Start Audio Only</button>
-		<button class="button is-success" id="start-file-button">Filetransfer</button>
-		<a href="#" id="download" download="">Download</a>
-		<progress id="progress" value="" max=""></progress>
+        <nav class="nav">
+          <div class="nav-left">
+            <a class="nav-item is-brand" href="#">
+              <h1>Logo Here</h1>
+            </a>
+          </div>
+
+          <div class="nav-center">
+            <h1 class="title" id="room-name">Room</h1><br>
+            <!-- <p id="room-url" style="text-align: center;"></p> -->
+          </div>
+
+          <div class="nav-right nav-menu">
+            <div class="nav-item">
+              <button class="button" id="start-video-button" style="border: none; color: #ed6c63 "><i class="fa fa-video-camera fa-2x" aria-hidden="true"></i></button><br>
+            </div>
+            <div class="nav-item">
+                <button class="button" id="start-audio-button" style="border: none; color: #ed6c63 "><i class="fa fa-phone fa-2x" aria-hidden="true"></i></button><br>
+            </div>
+            <div class="nav-item">
+                <button class="button" id="start-file-button" style="border: none; color: #ed6c63 "><i class="fa fa-file fa-2x" aria-hidden="true"></i></button><br>
+            </div>
+            <div class="nav-item">
+            </div>
+          </div>
+        </nav>
+
+        <div class="columns">
+            <div class="column">
+                <div id="remoteVideos"></div>
+            </div>
+            <div class="column is-2">
+                <video id="localVideo"></video>
+            </div>
+        </div>
+
+        <div id="waiting">
+            <div class="modal-background"></div>
+            <div class="container has-text-centered">
+                <h1 class="title" style="color: #fff;">Waiting for People to Connect</h1>
+            </div>
+        </div>
+
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-container">
+            <div class="modal-content">
+                <div class="box" style="text-align: center;">
+                    <input type="file" id="file"><br>
+                    <progress id="progress" value="" max=""></progress><br>
+                    <a class="button" style="border: none; color: #ed6c63; display: none;" id="download" download=""><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>
+                </div>
+            </div>
+          </div>
+          <button class="modal-close"></button>
+        </div>
+
 	</body>
 
     <script src="simplertc.js"></script>

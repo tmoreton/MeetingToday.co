@@ -1,10 +1,11 @@
 #remoteVideos video {
-    height: 100%;
-    width: 50%;
+    width: 100%;
 }
 #localVideo {
-    width: 20%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+}
+.modal-background {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }

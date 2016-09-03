@@ -1,3 +1,53 @@
+var room = getParams('name')
+$("#room-name").text("Room " + room.toUpperCase())
+$("#room-url").text(window.location.href)
+$("#modal").click(function(){
+
+})
+
+
+
+var webrtc = new SimpleWebRTC({
+    localVideoEl: '',
+    remoteVideosEl: '',
+    autoRequestMedia: false,
+    receiveMedia: {
+        offerToReceiveAudio: 0,
+        offerToReceiveVideo: 0
+    }
+});
+
+webrtc.joinRoom(room, function(test){
+    webrtc.sendToAll('chat', {message: 'hello bitches'});
+});
+
+
+webrtc.on('createdPeer', function (peer) {
+    console.log("someone joined!!", peer.parent.peers.length)
+    if (peer.parent.peers.length > 0){
+        $("#waiting").css("display", "none")
+    }
+});
+
+webrtc.on('leftRoom', function (roomName) {
+    console.log("someone left...", roomName)
+});
+
+webrtc.connection.on('message', function(data){
+    if(data.type === 'chat'){
+        console.log('chat received',data);
+    }
+});
+
+window.setInterval(function(){
+    console.log("timer")
+    if (webrtc.webrtc.peers.length < 1){
+        $("#waiting").css("display", "none");
+    } else if(webrtc.webrtc.peers.length > 1){
+        $("#waiting").css("display", "block");
+    }
+}, 1000);
+
 $("#start-video-button").click(function(){
     var webrtc = new SimpleWebRTC({
         localVideoEl: 'localVideo',
@@ -9,15 +59,13 @@ $("#start-video-button").click(function(){
         }
     });
 
-    var room = getParams('name')
+    
     webrtc.on('readyToCall', function () {
         webrtc.joinRoom(room);
     });
 
-    // called when a peer is created
     webrtc.on('createdPeer', function (peer) {
         var peer = peer;
-        console.log('createdPeer', peer);
         getPeer(peer);
     });
 })
@@ -37,7 +85,6 @@ $("#start-audio-button").click(function(){
         }
     });
 
-    var room = getParams('name')
     webrtc.on('readyToCall', function () {
         webrtc.joinRoom(room);
     });
@@ -54,14 +101,18 @@ $("#start-file-button").click(function(){
         }
     });
 
-    var room = getParams('name')
     webrtc.joinRoom(room);
-    // called when a peer is created
     webrtc.on('createdPeer', function (peer) {
         var peer = peer;
-        console.log('createdPeer', peer);
         getPeer(peer);
     });
+})
+
+$(".fa-file").click(function(){
+    $(".modal").addClass("is-active")
+})
+$(".modal-close, .modal-background").click(function(){
+    $(".modal").removeClass("is-active")
 })
 
 
@@ -79,6 +130,7 @@ function getPeer(peer){
             console.log('received file', metadata.name, metadata.size);
 
             var url = URL.createObjectURL(file)
+            $("#download").css("display", 'block')
             $("#download").attr("href", url)
             $("#download").attr("download", metadata.name)
             // close the channel

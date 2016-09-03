@@ -1,0 +1,12 @@
+#remoteVideos video {
+    width: 100%;
+}
+#localVideo {
+    width: 100%;
+}
+
+.button.is-success {
+	display: block;
+    margin: auto;
+        width: 100%;
+}
