@@ -5,8 +5,21 @@
     width: 100%;
 }
 
-.button.is-success {
-	display: block;
-    margin: auto;
-        width: 100%;
+textarea {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	resize: none;
+	border: none;
+	padding: 10px;
+}
+
+.waiting-title {
+	position: absolute;
+    top: 50%;
+    left: 35%;
+}
+
+#room-name {
+	margin: 10px;
 }

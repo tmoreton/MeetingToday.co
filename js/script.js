@@ -5,21 +5,40 @@ $("#modal").click(function(){
 
 })
 
+var webrtc = new SimpleWebRTC({
+    localVideoEl: '',
+    remoteVideosEl: '',
+    autoRequestMedia: false,
+    receiveMedia: {
+        offerToReceiveAudio: 0,
+        offerToReceiveVideo: 0
+    }
+});
 
-// var webrtc = new SimpleWebRTC({
-//     localVideoEl: '',
-//     remoteVideosEl: '',
-//     autoRequestMedia: false,
-//     receiveMedia: {
-//         offerToReceiveAudio: 0,
-//         offerToReceiveVideo: 0
-//     }
-// });
+webrtc.joinRoom(room, function(test){
+    webrtc.sendToAll('chat', {message: 'hello bitches', users: webrtc.webrtc.peers.length});
+});
 
-// webrtc.joinRoom(room, function(test){
-//     webrtc.sendToAll('chat', {message: 'hello bitches'});
-// });
+webrtc.connection.on('message', function(data){
+    if(data.type === 'chat'){
+        $( "#notes" ).val(data.payload.message)
+    }
+});
 
+var checkPeers = function(){
+    if (webrtc.webrtc.peers.length < 1){
+        $("#waiting").css("display", "block");
+    } else if(webrtc.webrtc.peers.length >= 1){
+        $("#waiting").css("display", "none");
+    }
+}
+
+window.setInterval(checkPeers, 500);
+
+$( "#notes" ).keyup(function() {
+  var notes = $( "#notes" ).val()
+  webrtc.sendToAll('chat', {message: notes, users: webrtc.webrtc.peers.length});
+});
 
 // webrtc.on('createdPeer', function (peer) {
 //     console.log("someone joined!!", peer.parent.peers.length)
@@ -32,22 +51,9 @@ $("#modal").click(function(){
 //     console.log("someone left...", roomName)
 // });
 
-// webrtc.connection.on('message', function(data){
-//     if(data.type === 'chat'){
-//         console.log('chat received',data);
-//     }
-// });
-
-// window.setInterval(function(){
-//     console.log("timer")
-//     if (webrtc.webrtc.peers.length < 1){
-//         $("#waiting").css("display", "none");
-//     } else if(webrtc.webrtc.peers.length > 1){
-//         $("#waiting").css("display", "block");
-//     }
-// }, 1000);
-
 $("#start-video-button").click(function(){
+    $("#start-video-button").css("color", "#00b200");
+    $("#start-audio-button").css("display", "none");
     var webrtc = new SimpleWebRTC({
         localVideoEl: 'localVideo',
         remoteVideosEl: 'remoteVideos',
@@ -70,6 +76,8 @@ $("#start-video-button").click(function(){
 })
 
 $("#start-audio-button").click(function(){
+    $("#start-audio-button").css("color", "#00b200");
+    $("#start-video-button").css("display", "none");
     var webrtc = new SimpleWebRTC({
         localVideoEl: 'localVideo',
         remoteVideosEl: 'remoteVideos',

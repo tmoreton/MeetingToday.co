@@ -38,16 +38,15 @@
             <div class="column">
                 <div id="remoteVideos"></div>
             </div>
-            <div class="column is-2">
+            <div class="column is-3">
+                <textarea placeholder="Meeting Notes" id="notes" rows="30"></textarea>
                 <video id="localVideo"></video>
             </div>
         </div>
 
-        <div id="waiting" style='display: none;'>
+        <div id="waiting">
             <div class="modal-background"></div>
-            <div class="container has-text-centered">
-                <h1 class="title" style="color: #fff;">Waiting for People to Connect</h1>
-            </div>
+            <h1 class="title waiting-title" style="color: #fff;">Waiting for People to Connect</h1>
         </div>
 
         <div class="modal">
@@ -66,7 +65,7 @@
 
 	</body>
 
-    <script src="simplertc.js"></script>
-    <script src="jquery.js"></script>
-    <script src="script.js"></script>
+    <script src="js/simplertc.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
 </html>
