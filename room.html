@@ -9,27 +9,29 @@
     <body>
         <nav class="nav">
           <div class="nav-left">
-            <a class="nav-item is-brand" href="#">
-              <h1>Logo Here</h1>
-            </a>
-          </div>
-
-          <div class="nav-center">
-            <h1 class="title" id="room-name">Room</h1><br>
-            <!-- <p id="room-url" style="text-align: center;"></p> -->
-          </div>
-
-          <div class="nav-right nav-menu">
             <div class="nav-item">
               <button class="button" id="start-video-button" style="border: none; color: #ed6c63 "><i class="fa fa-video-camera fa-2x" aria-hidden="true"></i></button><br>
             </div>
             <div class="nav-item">
                 <button class="button" id="start-audio-button" style="border: none; color: #ed6c63 "><i class="fa fa-phone fa-2x" aria-hidden="true"></i></button><br>
             </div>
+          </div>
+
+          <div class="nav-center">
+            <a class="nav-item is-brand" href="#">
+              <h1>Logo Here</h1>
+            </a>
+          </div>
+
+          <div class="nav-right nav-menu">
             <div class="nav-item">
                 <button class="button" id="start-file-button" style="border: none; color: #ed6c63 "><i class="fa fa-file fa-2x" aria-hidden="true"></i></button><br>
             </div>
+            <!-- <div class="nav-item">
+                <button class="button" id="start-screen-button" style="border: none; color: #ed6c63 "><i class="fa fa-desktop fa-2x" aria-hidden="true"></i></button><br>
+            </div> -->
             <div class="nav-item">
+                <a class="button" style="border: none; color: #00b200; display: none;" id="download" download=""><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>
             </div>
           </div>
         </nav>
@@ -37,10 +39,12 @@
         <div class="columns">
             <div class="column">
                 <div id="remoteVideos"></div>
+
             </div>
             <div class="column is-3">
-                <textarea placeholder="Meeting Notes" id="notes" rows="30"></textarea>
                 <video id="localVideo"></video>
+                <textarea placeholder="Meeting Notes" id="notes" rows="30"></textarea>
+                
             </div>
         </div>
 
@@ -55,8 +59,7 @@
             <div class="modal-content">
                 <div class="box" style="text-align: center;">
                     <input type="file" id="file"><br>
-                    <progress id="progress" value="" max=""></progress><br>
-                    <a class="button" style="border: none; color: #ed6c63; display: none;" id="download" download=""><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>
+                    <!-- <progress id="progress" value="" max=""></progress><br> -->
                 </div>
             </div>
           </div>
@@ -68,4 +71,5 @@
     <script src="js/simplertc.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
+
 </html>

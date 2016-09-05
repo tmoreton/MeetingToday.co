@@ -1,3 +1,7 @@
+html {
+	background-color: #fff;
+}
+
 #remoteVideos video {
     width: 100%;
 }
@@ -22,4 +26,27 @@ textarea {
 
 #room-name {
 	margin: 10px;
+}
+
+.column {
+	padding: 0;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1900px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 1280px) {
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width :840px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
 }
