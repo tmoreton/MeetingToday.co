@@ -1,5 +1,7 @@
 var room = window.location.search.replace("?", "");
-$("#room-url").text(window.location.href)
+var link = "mailto:?Subject=Enter%20Room%20" + window.location.href
+
+$("#link").attr("href", link);
 
 var webrtc = new SimpleWebRTC({
     localVideoEl: 'localVideo',
@@ -13,7 +15,7 @@ var webrtc = new SimpleWebRTC({
 
 webrtc.on('readyToCall', function () {
     webrtc.joinRoom(room, function(){
-        webrtc.sendToAll('chat', {message: 'hello bitches', users: webrtc.webrtc.peers.length});
+        webrtc.sendToAll('chat', {users: webrtc.webrtc.peers.length});
     });
     webrtc.pauseVideo();
     webrtc.mute();
