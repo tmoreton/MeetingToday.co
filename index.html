@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/bulma.css">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="css/bulma.css">
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
 
     <body>
-        <section class="hero is-fullheight is-primary">
-          <div class="hero-body">
-            <div class="container has-text-centered">
-<!--               <h3 class="title is-2">
-                <strong>Chat Me</strong>
-              </h3> -->
-              <button class="button is-medium" style="border: none;" onclick="myFunction()" >Go To Room</button>
-            </div>
-          </div>
 
-<!--           <div class="hero-foot">
-            <div class="container">
-              <div class="tabs is-centered">
-                <ul>
-                  <li><a>And this at the bottom</a></li>
-                </ul>
+      <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="home" autoplay muted loop>
+      <source src="french.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-body">
+        <!-- <video src="french.mp4" autoplay loop style="opacity: 0.25"></video> -->
+        <div class="container has-text-centered" style="padding-top: 150px; padding-bottom: 50px;">
+          <h1 class="title is-1">Let's Meet</h1>
+          <h2 class="subtitle is-3">A simple & secure video chat platform</h2>
+          <p>
+          <button class="button is-medium" style="border: none;" onclick="myFunction()" >Start</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="section main">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-4">
+              <div class="panel">
+                <div class="panel-block section">
+                  <p class="has-text-centered"><i class="fa fa-video-camera fa-3x" aria-hidden="true"></i></p>
+                  <br>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
+                  <br>
+                </div>
               </div>
             </div>
-          </div> -->
-        </section>        
+            <div class="column is-4">
+              <div class="panel">
+                <div class="panel-block section">
+                  <p class="has-text-centered"><i class="fa fa-phone fa-3x" aria-hidden="true"></i></p>
+                  <br>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
+                  <br>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="panel">
+                <div class="panel-block section">
+                  <p class="has-text-centered"><i class="fa fa-file fa-3x" aria-hidden="true"></i></p>
+                  <br>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 
     <script type="text/javascript">
-        function myFunction(){
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      function myFunction(){
+          var text = "";
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-            for( var i=0; i < 15; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-            var room = text;
+          for( var i=0; i < 15; i++ )
+              text += possible.charAt(Math.floor(Math.random() * possible.length));
+          var room = text;
 
-            window.location = "room.html?" + room;
-        }
+          window.location = "room.html?" + room;
+      }
     </script>
 </html>

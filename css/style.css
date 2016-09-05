@@ -2,6 +2,28 @@ html {
 	background-color: #fff;
 }
 
+video#home{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+	 background: url('french.mp4') no-repeat;
+	  background-size: cover;
+}
+
+.panel {
+	margin: 25px;
+}
+
+.section {
+	background-color: transparent;
+}
+
 #remoteVideos video {
     width: 100%;
 }
@@ -19,9 +41,8 @@ textarea {
 }
 
 .waiting-title {
-	position: absolute;
-    top: 50%;
-    left: 35%;
+    position: relative;
+    top: -350px;
 }
 
 #room-name {
@@ -40,6 +61,7 @@ textarea {
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 1280px) {
 
+}
 
 /* Small Devices, Tablets */
 @media only screen and (max-width :840px) {
@@ -50,3 +72,4 @@ textarea {
 @media only screen and (max-width : 480px) {
 
 }
+
