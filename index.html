@@ -7,58 +7,60 @@
     </head>
 
     <body>
-
-      <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="home" autoplay muted loop>
-      <source src="french.mp4" type="video/mp4">
-      </video>
-
-      <div class="hero-body">
-        <!-- <video src="french.mp4" autoplay loop style="opacity: 0.25"></video> -->
-        <div class="container has-text-centered" style="padding-top: 150px; padding-bottom: 50px;">
-          <h1 class="title is-1">Let's Meet</h1>
-          <h2 class="subtitle is-3">A simple & secure video chat platform</h2>
-          <p>
-          <button class="button is-medium" style="border: none;" onclick="myFunction()" >Start</button>
-          </p>
+      <section class="hero is-primary is-fullheight is-bold">
+        <div class="hero-video is-transparent">
+          <video id="home" autoplay muted loop>
+            <source src="french.mp4" type="video/mp4">
+          </video>
         </div>
-      </div>
+        <div class="hero-body" style="padding: 0;">
+          <!-- <video src="french.mp4" autoplay loop style="opacity: 0.25"></video> -->
+          <div class="container has-text-centered">
+            <h1 class="title is-1">Let's Meet</h1>
+            <h2 class="subtitle is-3" style="color: #fff;">A simple & secure video chat platform</h2>
+            <p>
+            <button class="button is-large" style="border: 1px solid #fff; background-color: transparent; color: #fff; padding: 0 80px;" onclick="myFunction()" >Get Started</button>
+            </p>
+          </div>
+        </div>
 
-      <div class="section main">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-4">
-              <div class="panel">
-                <div class="panel-block section">
-                  <p class="has-text-centered"><i class="fa fa-video-camera fa-3x" aria-hidden="true"></i></p>
-                  <br>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
-                  <br>
+        <div class="section main" style="padding-top: 0;">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-4">
+                <div class="panel">
+                  <div class="panel-block section">
+                    <p class="has-text-centered"><i class="fa fa-video-camera fa-4x" style="color: #fff;" aria-hidden="true"></i></p>
+                    <br>
+                    <p class="feature">No extra software to needed</p>
+                    <br>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="column is-4">
-              <div class="panel">
-                <div class="panel-block section">
-                  <p class="has-text-centered"><i class="fa fa-phone fa-3x" aria-hidden="true"></i></p>
-                  <br>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
-                  <br>
+              <div class="column is-4">
+                <div class="panel">
+                  <div class="panel-block section">
+                    <p class="has-text-centered"><i class="fa fa-phone fa-4x" style="color: #fff;" aria-hidden="true"></i></p>
+                    <br>
+                    <p class="feature">No login required to get on a call</p>
+                    <br>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="column is-4">
-              <div class="panel">
-                <div class="panel-block section">
-                  <p class="has-text-centered"><i class="fa fa-file fa-3x" aria-hidden="true"></i></p>
-                  <br>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
-                  <br>
+              <div class="column is-4">
+                <div class="panel">
+                  <div class="panel-block section">
+                    <p class="has-text-centered"><i class="fa fa-file fa-4x" style="color: #fff;" aria-hidden="true"></i></p>
+                    <br>
+                    <p class="feature">Safe & Secure File Sharing</p>
+                    <br>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </body>
 
     <script type="text/javascript">

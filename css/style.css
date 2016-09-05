@@ -2,20 +2,6 @@ html {
 	background-color: #fff;
 }
 
-video#home{ 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
-	 background: url('french.mp4') no-repeat;
-	  background-size: cover;
-}
-
 .panel {
 	margin: 25px;
 }
@@ -53,6 +39,12 @@ textarea {
 	padding: 0;
 }
 
+.feature {
+	color: #fff;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.25;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1900px) {
 
