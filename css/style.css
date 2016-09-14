@@ -45,6 +45,26 @@ textarea {
     font-size: 17px;
     line-height: 1.25;
 }
+
+.tutorial-nav {
+	background-color: transparent;
+}
+
+.fa {
+    padding: 0 50px;
+}
+
+.fa-arrow-up {
+    color: white;
+    padding: 0 60px;
+}
+
+.tutorial-p {
+	font-size: 18px;
+	color: #fff;
+	padding-top: 18px;
+}
+
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1900px) {
 

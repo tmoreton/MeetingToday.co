@@ -98,8 +98,10 @@ function getPeer(peer){
 var checkPeers = function(){
     if (webrtc.webrtc.peers.length < 1){
         $("#waiting").css("display", "block");
+        $(".tutorial-nav").css("visibility", "visible");
     } else if(webrtc.webrtc.peers.length >= 1){
         $("#waiting").css("display", "none");
+        $(".tutorial-nav").css("visibility", "hidden");
     }
 }
 
