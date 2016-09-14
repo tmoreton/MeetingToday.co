@@ -1,6 +1,7 @@
-var host = "meetingtoday.co";
-if ((host == window.location.host) && (window.location.protocol != "https:"))
-    window.location.protocol = "https";
+var host = "meetingtoday.co"
+if (window.location.host == host && window.location.protocol != "https:") {
+  window.location.protocol = "https:"
+}
 
 var room = window.location.search.replace("?", "");
 var link = "mailto:?Subject=Enter%20Room%20" + window.location.href
