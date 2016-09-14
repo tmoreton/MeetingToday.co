@@ -64,6 +64,10 @@
     </body>
 
     <script type="text/javascript">
+      var host = "meetingtoday.co"
+      if (window.location.host == host && window.location.protocol != "https:") {
+        window.location.protocol = "https:"
+      }
       function myFunction(){
           var text = "";
           var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
