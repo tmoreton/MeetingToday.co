@@ -107,4 +107,9 @@ var checkPeers = function(){
     }
 }
 
+var host = "tmoreton.github.io/chatme"
+if (window.location.host == host && window.location.protocol != "https:") {
+  window.location.protocol = "https:"
+}
+
 window.setInterval(checkPeers, 500);
