@@ -29,6 +29,9 @@ textarea {
 .waiting-title {
     position: relative;
     top: -350px;
+	color: #fff; 
+	text-align: center;
+	font-size: x-large;
 }
 
 #room-name {
@@ -46,25 +49,13 @@ textarea {
     line-height: 1.25;
 }
 
-.tutorial-nav {
-	background-color: transparent;
-}
-
 .fa {
     padding: 0 50px;
 }
 
-.fa-arrow-up {
-    color: white;
-    padding: 0 60px;
+.title {
+	font-weight: bold;
 }
-
-.tutorial-p {
-	font-size: 18px;
-	color: #fff;
-	padding-top: 18px;
-}
-
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1900px) {
 

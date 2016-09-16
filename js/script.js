@@ -7,7 +7,7 @@ var room = window.location.search.replace("?", "");
 var link = "mailto:?Subject=Enter%20Room%20" + window.location.href
 
 $("#link").attr("href", link);
-$(".waiting-title").text(window.location.href);
+$(".waiting-title").html("Others can join at: "+ window.location.href);
 
 var webrtc = new SimpleWebRTC({
     localVideoEl: 'localVideo',
