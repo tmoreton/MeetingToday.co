@@ -7,7 +7,7 @@ var room = window.location.search.replace("?", "");
 var link = "mailto:?Subject=Enter%20Room%20" + window.location.href
 
 $("#link").attr("href", link);
-$(".waiting-title").html("Others can join at: "+ window.location.href);
+$(".waiting-title").text(window.location.href);
 
 var webrtc = new SimpleWebRTC({
     localVideoEl: 'localVideo',
@@ -80,7 +80,7 @@ function getPeer(peer){
             console.log('received file', metadata.name, metadata.size);
 
             var url = URL.createObjectURL(file)
-            $("#download").css("display", 'block')
+            $("#download-nav").css("display", 'block')
             $("#download").attr("href", url)
             $("#download").attr("download", metadata.name)
             // close the channel

@@ -56,6 +56,17 @@ textarea {
 .title {
 	font-weight: bold;
 }
+
+.blue-btn {
+	background-color: #1fc8db; 
+	color: #fff; 
+	height: auto; 
+	border: none;
+}
+
+.nav-item {
+	padding: 10px 30px;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1900px) {
 

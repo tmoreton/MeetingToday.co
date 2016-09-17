@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>meetingToday.co</title>
+
         <link rel="stylesheet" type="text/css" href="css/bulma.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/hover-min.css">
@@ -10,32 +15,38 @@
     <body>
         <!-- Main Navigation -->
         <nav class="nav">
-          <div class="nav-left">
-            <div class="nav-item">
-              <button class="button" id="start-video-button" style="border: none; color: #ed6c63; height: auto;"><span><i class="fa fa-video-camera fa-2x" aria-hidden="true"></i><br>Start Video</span></button>
+            <div class="nav-left">
+                <div class="nav-item">
+                    <button class="button blue-btn" id="start-video-button">
+                        <span><i class="fa fa-video-camera fa-lg" aria-hidden="true"></i><br>Start Video</span>
+                    </button>
+                </div>
+                <div class="nav-item">
+                    <button class="button blue-btn" id="start-audio-button">
+                        <span><i class="fa fa-phone fa-lg" aria-hidden="true"></i><br>Start Audio</span>
+                    </button>
+                </div>
             </div>
-            <div class="nav-item">
-                <button class="button" id="start-audio-button" style="border: none; color: #ed6c63; height: auto;"><span><i class="fa fa-phone fa-2x" aria-hidden="true"></i><br>Start Audio</span></button>
-            </div>
-          </div>
 
-          <div class="nav-center">
-            <a class="nav-item is-brand" href="index.html">
-              <h1 style="color: #1fc8db; font-size: x-large;">meetingToday.co</h1>
-            </a>
-          </div>
+            <div class="nav-center">
+                <a class="nav-item is-brand" href="index.html">
+                    <h1 style="color: #1fc8db; font-size: x-large;">meetingToday.co</h1>
+                </a>
+            </div>
 
-          <div class="nav-right nav-menu">
-            <div class="nav-item">
-                <button class="button" id="start-file-button" style="border: none; color: #ed6c63; height: auto;"><span><i class="fa fa-file fa-2x" aria-hidden="true"></i><br>File Transfer</span></button>
+            <div class="nav-right">
+                <div class="nav-item">
+                    <button class="button blue-btn" id="start-file-button"><span><i class="fa fa-file fa-lg" aria-hidden="true"></i><br>File Transfer</span></button>
+                </div>
+                <div class="nav-item">
+                    <button class="button blue-btn">
+                        <a href="" class="blue-btn" id="link" target="_top"><span><i class="fa fa-link fa-lg" aria-hidden="true"></i><br>Share Room</span></a>
+                    </button>
+                </div>
+                <div class="nav-item download-nav" style="display: none;">
+                    <a class="button" style="border: none; color: #00b200;" id="download" download=""><i class="fa fa-download fa-lg" aria-hidden="true"></i></a>
+                </div>
             </div>
-            <div class="nav-item">
-                <a href="" style="color: #ed6c63" id="link" target="_top"><span><i class="fa fa-link fa-2x" aria-hidden="true"></i><br>Share Room</span></a>
-            </div>
-            <div class="nav-item">
-                <a class="button" style="border: none; color: #00b200; display: none;" id="download" download=""><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>
-            </div>
-          </div>
         </nav>
 
         <div class="columns">
@@ -59,6 +70,7 @@
             <div class="modal-content">
                 <div class="box" style="text-align: center;">
                     <input type="file" id="file"><br>
+                    <br><p>(Files limited to 50mb)</p>
                     <!-- <progress id="progress" value="" max=""></progress><br> -->
                 </div>
             </div>
