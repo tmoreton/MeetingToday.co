@@ -3,60 +3,78 @@ if (window.location.host == host && window.location.protocol != "https:") {
   window.location.protocol = "https:"
 }
 
+var webrtc;
 var room = window.location.search.replace("?", "");
 var link = "mailto:?Subject=Enter%20Room%20" + window.location.href
 
 $("#link").attr("href", link);
 $(".waiting-title").text(window.location.href);
 
-var webrtc = new SimpleWebRTC({
-    localVideoEl: 'localVideo',
-    remoteVideosEl: 'remoteVideos',
-    autoRequestMedia: { audio: true, video: true },
-    receiveMedia: {
-        offerToReceiveAudio: 1,
-        offerToReceiveVideo: 1
-    }
-});
 
-webrtc.on('readyToCall', function () {
-    webrtc.joinRoom(room, function(){
-        webrtc.sendToAll('chat', {users: webrtc.webrtc.peers.length});
+function startRoom(audio, video){
+    webrtc = new SimpleWebRTC({
+        localVideoEl: 'localVideo',
+        remoteVideosEl: 'remoteVideos',
+        autoRequestMedia: { audio: audio, video: video },
+        receiveMedia: {
+            offerToReceiveAudio: 1,
+            offerToReceiveVideo: 1
+        }
     });
-    webrtc.pauseVideo();
-    webrtc.mute();
-});
 
-webrtc.on('createdPeer', function (peer) {
-    var peer = peer;
-    getPeer(peer);
-});
+    webrtc.on('readyToCall', function () {
+        webrtc.joinRoom(room, function(){
+            webrtc.sendToAll('chat', {users: webrtc.webrtc.peers.length});
+        });
+    });
 
-webrtc.connection.on('message', function(data){
-    if(data.type === 'chat'){
-        $( "#notes" ).val(data.payload.message)
-    }
-});
+    webrtc.on('createdPeer', function (peer) {
+        var peer = peer;
+        getPeer(peer);
+    });
 
-$( "#notes" ).keyup(function() {
-  var notes = $( "#notes" ).val()
-  webrtc.sendToAll('chat', {message: notes, users: webrtc.webrtc.peers.length});
-});
+    webrtc.connection.on('message', function(data){
+        if(data.type === 'chat'){
+            $( "#notes" ).val(data.payload.message)
+        }
+    });
 
+    $( "#notes" ).keyup(function() {
+      var notes = $( "#notes" ).val()
+      webrtc.sendToAll('chat', {message: notes, users: webrtc.webrtc.peers.length});
+    });
+    $("#start-file-button").css("display", "block")
+}
 
 $("#start-video-button").click(function(){
-    $("#start-video-button").css("color", "#00b200");
+    $("#start-video-button").css("display", "none");
     $("#start-audio-button").css("display", "none");
-    webrtc.resumeVideo();
-    webrtc.unmute();
+    $("#end-call-button").css("display", "block");
+    $("#waiting").css("display", "none");
+    startRoom(true, true);
 })
 
 $("#start-audio-button").click(function(){
-    $("#start-audio-button").css("color", "#00b200");
+    $("#start-audio-button").css("display", "none");
     $("#start-video-button").css("display", "none");
-    webrtc.unmute();
+    $("#end-call-button").css("display", "block");
+    $("#waiting").css("display", "none");
+    startRoom(true, false);
 })
 
+// $("#start-file-button").click(function(){
+//     $("#waiting").css("display", "none");
+//     startRoom(false, false);
+// })
+
+$("#end-call-button").click(function(){
+    $("#start-audio-button").css("display", "block");
+    $("#start-video-button").css("display", "block");
+    $("#end-call-button").css("display", "none");
+    $("#waiting").css("display", "block");
+    webrtc.disconnect();
+    webrtc.stopLocalVideo();
+})
 
 $(".fa-file").click(function(){
     $(".modal").addClass("is-active")
@@ -64,7 +82,6 @@ $(".fa-file").click(function(){
 $(".modal-close, .modal-background").click(function(){
     $(".modal").removeClass("is-active")
 })
-
 
 function getPeer(peer){
     // receiving an incoming filetransfer
@@ -80,7 +97,7 @@ function getPeer(peer){
             console.log('received file', metadata.name, metadata.size);
 
             var url = URL.createObjectURL(file)
-            $("#download-nav").css("display", 'block')
+            $("#download-btn").css("display", 'block')
             $("#download").attr("href", url)
             $("#download").attr("download", metadata.name)
             // close the channel
@@ -100,14 +117,12 @@ function getPeer(peer){
     });
 }
 
-var checkPeers = function(){
-    if (webrtc.webrtc.peers.length < 1){
-        $("#waiting").css("display", "block");
-        $(".tutorial-nav").css("visibility", "visible");
-    } else if(webrtc.webrtc.peers.length >= 1){
-        $("#waiting").css("display", "none");
-        $(".tutorial-nav").css("visibility", "hidden");
-    }
-}
+// var checkPeers = function(){
+//     if (webrtc.webrtc.peers.length < 1){
+//         $("#waiting").css("display", "block");
+//     } else if(webrtc.webrtc.peers.length >= 1){
+//         $("#waiting").css("display", "none");
+//     }
+// }
 
-window.setInterval(checkPeers, 500);
+// window.setInterval(checkPeers, 500);
