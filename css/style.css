@@ -27,11 +27,12 @@ textarea {
 }
 
 .waiting-title {
-    position: relative;
-    top: -350px;
-	color: #fff; 
-	text-align: center;
-	font-size: x-large;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: x-large;
 }
 
 #room-name {
