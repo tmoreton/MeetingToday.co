@@ -16,6 +16,7 @@ function startRoom(audio, video){
         localVideoEl: 'localVideo',
         remoteVideosEl: 'remoteVideos',
         autoRequestMedia: { audio: audio, video: video },
+        media: {audio: audio, video: video},
         receiveMedia: {
             offerToReceiveAudio: 1,
             offerToReceiveVideo: 1
